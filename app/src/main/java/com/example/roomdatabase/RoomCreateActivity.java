@@ -43,7 +43,7 @@ public class RoomCreateActivity extends AppCompatActivity {
                     barang.setMerkBarang(etMerkBarang.getText().toString());
                     barang.setHargaBarang(etHargaBarang.getText().toString());
 
-//                    updataBarang(barang);
+                    updateBarang(barang);
                 }
             });
         } else {
@@ -60,20 +60,20 @@ public class RoomCreateActivity extends AppCompatActivity {
         }
     }
 
-//    private void updateBarang(final Barang barang){
-//        new AsyncTask<Void, Void, Long>(){
-//            @Override
-//            protected Long doInBackground(Void... voids) {
-//                long status = db.barangDAO().updateBarang(barang);
-//                return status;
-//            }
-//
-//            @Override
-//            protected void onPostExecute(Long status) {
-//                Toast.makeText(RoomCreateActivity.this, "status row "+status, Toast.LENGTH_SHORT).show();
-//            }
-//        }.execute();
-//    }
+    private void updateBarang(final Barang barang){
+        new AsyncTask<Void, Void, Long>(){
+            @Override
+            protected Long doInBackground(Void... voids) {
+                long status = db.barangDAO().updateBarang(barang);
+                return status;
+            }
+
+            @Override
+            protected void onPostExecute(Long status) {
+                Toast.makeText(RoomCreateActivity.this, "status row "+status, Toast.LENGTH_SHORT).show();
+            }
+        }.execute();
+    }
 
     private void insertData(final Barang barang){
 

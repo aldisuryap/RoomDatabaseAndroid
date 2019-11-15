@@ -1,9 +1,11 @@
 package com.example.roomdatabase;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Room;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,10 +18,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        db = Room.databaseBuilder(getApplicationContext(),
-                AppDatabase.class, "barangdb").build();
+        Button btCreate = findViewById(R.id.bt_createdata);
+        Button btView = findViewById(R.id.bt_viewdata);
 
-//        db.barangDAO().insertBarang();
+        btCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RoomCreateActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RoomReadActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }
